@@ -144,5 +144,12 @@ public class Pen
         }
 
     }
+    /**
+     * Devuelve la posicion del lapiz
+     */
+    public String getPosition()
+    {
+        return xPosition + " " + yPosition;
+    }
 
 }

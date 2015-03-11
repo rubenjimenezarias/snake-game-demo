@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.awt.Color;
+import java.util.HashMap;
 /**
  * Write a description of class SnakeGameDemo here.
  * 
@@ -12,6 +13,8 @@ public class SnakeGameDemo
     private Canvas myCanvas;
     private Random random;
     private int sizeSnake;
+    private HashMap <Integer,String> posiciones;
+    int movimiento = 0;
 
     /**
      * Constructor for objects of class SnakeGameDemo
@@ -23,6 +26,8 @@ public class SnakeGameDemo
         myCanvas.erase();
         random = new Random();
         sizeSnake = 10;
+        posiciones = new HashMap<>();
+        
     }
 
     /**
@@ -31,6 +36,8 @@ public class SnakeGameDemo
     public void drawSnake()
     {
         Pen pen = new Pen(150, 150, myCanvas);
+        posiciones.put(movimiento,pen.getPosition());
+        movimiento++;
         int x = 30;
         for (int i=0; i<3; i++) {
             pen.move(10);
@@ -47,7 +54,8 @@ public class SnakeGameDemo
             {
                 pen.turn(180);
             }
+            posiciones.put(movimiento,pen.getPosition());
+            movimiento++;
         }
-        
     }
 }
