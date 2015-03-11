@@ -1,6 +1,6 @@
 import java.util.Random;
 import java.awt.Color;
-import java.util.HashMap;
+import java.util.ArrayList;
 /**
  * Write a description of class SnakeGameDemo here.
  * 
@@ -11,10 +11,8 @@ public class SnakeGameDemo
 {
     // instance variables - replace the example below with your own
     private Canvas myCanvas;
+    private ArrayList<Segmento> puntos;
     private Random random;
-    private int sizeSnake;
-    private HashMap <Integer,String> posiciones;
-    int movimiento = 0;
 
     /**
      * Constructor for objects of class SnakeGameDemo
@@ -22,11 +20,10 @@ public class SnakeGameDemo
     public SnakeGameDemo()
     {
         // initialise instance variables
-        myCanvas = new Canvas("Drawing Demo", 500, 400);  
+        myCanvas = new Canvas("Drawing Demo", 500, 400);
         myCanvas.erase();
+        puntos = new ArrayList<>();
         random = new Random();
-        sizeSnake = 10;
-        posiciones = new HashMap<>();
         
     }
 
@@ -36,11 +33,13 @@ public class SnakeGameDemo
     public void drawSnake()
     {
         Pen pen = new Pen(150, 150, myCanvas);
-        posiciones.put(movimiento,pen.getPosition());
-        movimiento++;
-        int x = 30;
-        for (int i=0; i<3; i++) {
-            pen.move(10);
+        
+        Segmento segmento = new Segmento(150,150);
+        puntos.add(segmento);
+        pen.move(20);
+        
+        for (int i=0; i<2; i++) {
+            pen.move(20);
             int numeroAleatorio = random.nextInt(3);
             if (numeroAleatorio == 0)
             {
@@ -54,8 +53,10 @@ public class SnakeGameDemo
             {
                 pen.turn(180);
             }
-            posiciones.put(movimiento,pen.getPosition());
-            movimiento++;
+            Segmento nuevoSegmento = new Segmento(pen.getX(),pen.getY());
+            puntos.add(nuevoSegmento);
         }
+        
     }
+    
 }

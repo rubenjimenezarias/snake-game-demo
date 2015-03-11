@@ -151,5 +151,19 @@ public class Pen
     {
         return xPosition + " " + yPosition;
     }
+    /**
+     * Devuelve la posicion x del lapiz
+     */
+    public int getX()
+    {
+        return xPosition;
+    }
+    /**
+     * Devuelve la posicion y del lapiz
+     */
+    public int getY()
+    {
+        return yPosition;
+    }
 
 }
